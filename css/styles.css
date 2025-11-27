@@ -1,0 +1,888 @@
+/* IMPORTAR FUENTES */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap");
+
+:root {
+    /* Paleta Cyberpunk Modificada */
+    --bg-dark: #0d1117;
+    /* Fondo principal */
+    --card-bg: #161b22;
+    /* Fondo de tarjetas */
+    --primary: #58cdd1;
+    /* Cian (Tu color draw-border) */
+    --secondary: #eb196e;
+    /* Rosa Neón (Tu color de acento) */
+    --text-main: #e6edf3;
+    --text-muted: #8b949e;
+
+    --font-heading: 'Baloo Paaji 2', cursive;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #30363d;
+    padding: 1rem 0;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-logo a {
+    font-family: var(--font-code);
+    color: var(--primary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--secondary);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+}
+
+/* =========================================
+   HERO SECTION 2.0 (CYBERPUNK UPGRADE)
+   ========================================= */
+
+/* 1. FONDO SPOTLIGHT (La grid se ilumina) */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #050505;
+    /* Fondo casi negro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Grid base (muy tenue) */
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    /* El degradado radial se controla con JS */
+    mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+            black 0%,
+            transparent 20%);
+    -webkit-mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+            black 0%,
+            transparent 20%
+            /* Radio de la linterna */
+        );
+    /* Color de la grid iluminada */
+    background-color: rgba(0, 191, 255, 0.15);
+}
+
+/* Capa extra para que se vea la grid apagada de fondo siempre */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+}
+
+/* 2. ICONOS FLOTANTES */
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.icon-float {
+    position: absolute;
+    color: var(--primary);
+    opacity: 0.15;
+    /* Muy sutil */
+    filter: blur(1px);
+    animation: floatUp 15s linear infinite;
+}
+
+/* Posiciones aleatorias para los iconos */
+.p1 {
+    left: 10%;
+    bottom: -50px;
+    font-size: 3rem;
+    animation-delay: 0s;
+}
+
+.p2 {
+    left: 85%;
+    bottom: -50px;
+    font-size: 4rem;
+    animation-delay: 2s;
+    color: var(--secondary);
+}
+
+.p3 {
+    left: 20%;
+    bottom: -50px;
+    font-size: 2rem;
+    animation-delay: 5s;
+}
+
+.p4 {
+    left: 70%;
+    bottom: -50px;
+    font-size: 2.5rem;
+    animation-delay: 8s;
+}
+
+.p5 {
+    left: 50%;
+    bottom: -50px;
+    font-size: 3.5rem;
+    animation-delay: 12s;
+    color: var(--secondary);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.3;
+    }
+
+    80% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 3. CONTENIDO PRINCIPAL */
+.hero-content {
+    z-index: 10;
+    text-align: center;
+    background: radial-gradient(circle, rgba(5, 5, 5, 0.8) 0%, rgba(5, 5, 5, 0) 70%);
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+/* 4. EFECTO GLITCH EN EL NOMBRE */
+.hero-title {
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    position: relative;
+    font-family: var(--font-heading);
+    letter-spacing: -2px;
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+/* Efecto glitch al hacer hover */
+.glitch:hover {
+    animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: var(--primary);
+}
+
+.glitch:hover::before,
+.glitch:hover::after {
+    display: block;
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+
+.glitch:hover::before {
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    color: var(--secondary);
+    clip-path: inset(0 0 0 0);
+}
+
+.glitch:hover::after {
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    color: #00ffff;
+    clip-path: inset(0 0 0 0);
+}
+
+@keyframes glitch-anim {
+    0% {
+        transform: translate(0)
+    }
+
+    20% {
+        transform: translate(-2px, 2px)
+    }
+
+    40% {
+        transform: translate(-2px, -2px)
+    }
+
+    60% {
+        transform: translate(2px, 2px)
+    }
+
+    80% {
+        transform: translate(2px, -2px)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip-path: inset(20% 0 80% 0)
+    }
+
+    20% {
+        clip-path: inset(60% 0 10% 0)
+    }
+
+    40% {
+        clip-path: inset(40% 0 50% 0)
+    }
+
+    60% {
+        clip-path: inset(80% 0 5% 0)
+    }
+
+    80% {
+        clip-path: inset(10% 0 60% 0)
+    }
+
+    100% {
+        clip-path: inset(30% 0 30% 0)
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: inset(10% 0 60% 0)
+    }
+
+    20% {
+        clip-path: inset(30% 0 20% 0)
+    }
+
+    40% {
+        clip-path: inset(10% 0 80% 0)
+    }
+
+    60% {
+        clip-path: inset(70% 0 10% 0)
+    }
+
+    80% {
+        clip-path: inset(50% 0 30% 0)
+    }
+
+    100% {
+        clip-path: inset(20% 0 50% 0)
+    }
+}
+
+.typewriter-container {
+    font-family: var(--font-code);
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 2rem;
+    min-height: 30px;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   TU TARJETA INTEGRADA (The "Card" Style)
+   ========================================= */
+.about {
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+/* Estilos específicos de la Card que pediste */
+.card {
+    background-color: var(--card-bg);
+    width: 320px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding-bottom: 2rem;
+    border: 1px solid #30363d;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img-container {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.card__image {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    object-fit: cover;
+    /* Efecto Neón Rosa en la foto */
+    box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}
+
+.card__name {
+    margin-top: 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.card__title {
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-family: var(--font-code);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    font-size: 1rem;
+    width: 100%;
+    border-top: 1px solid #30363d;
+    border-bottom: 1px solid #30363d;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.grid-child-posts,
+.grid-child-followers {
+    color: var(--text-muted);
+}
+
+/* REDES SOCIALES (Tu estilo) */
+.social-icons {
+    padding: 0;
+    list-style: none;
+    margin: 1em;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin: 0.15em;
+    position: relative;
+    font-size: 1em;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    text-decoration: none;
+}
+
+.social-icons i {
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    transition: all 265ms ease-out;
+}
+
+.social-icons a:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    transition: all 265ms ease-out;
+    transform: scale(1);
+    opacity: 0.8;
+}
+
+.social-icons a:hover:before {
+    transform: scale(0);
+}
+
+.social-icons a:hover i {
+    transform: scale(2.2);
+    color: var(--secondary);
+    background: -webkit-linear-gradient(45deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ABOUT TEXT */
+.about-text-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-title.center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+.code-block {
+    background: #000;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+}
+
+.code-pink {
+    color: #ff79c6;
+}
+
+.code-blue {
+    color: #8be9fd;
+}
+
+.code-green {
+    color: #50fa7b;
+}
+
+/* =========================================
+   BOTONES DRAW-BORDER (Tu pedido)
+   ========================================= */
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: 700 1rem var(--font-code);
+    padding: 0.8em 2em;
+    letter-spacing: 0.05rem;
+    color: var(--primary);
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn.sm {
+    padding: 0.5em 1.5em;
+    font-size: 0.8rem;
+    width: auto;
+    margin-top: 1rem;
+}
+
+.draw-border {
+    box-shadow: inset 0 0 0 4px var(--primary);
+    transition: color 0.25s 0.0833333333s;
+}
+
+.draw-border:hover {
+    color: var(--secondary);
+}
+
+.draw-border::before,
+.draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+}
+
+.draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+    border-color: var(--secondary);
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+}
+
+.draw-border:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+}
+
+/* SKILLS & PROJECTS GRID */
+.skills,
+.projects {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-grid,
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card,
+.project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    transition: 0.3s;
+}
+
+.skill-card:hover,
+.project-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(88, 205, 209, 0.15);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.tags span {
+    display: inline-block;
+    background: rgba(88, 205, 209, 0.1);
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    font-family: var(--font-code);
+}
+
+/* =========================================
+   TECH CARDS (Estilo Cyberpunk Avanzado)
+   ========================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.tech-card {
+    position: relative;
+    background: rgba(22, 27, 34, 0.8);
+    /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border: 1px solid #30363d;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    /* Esto crea el corte en la esquina superior derecha e inferior izquierda */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 85%,
+            90% 100%,
+            0 100%,
+            0 15%);
+}
+
+/* Efecto de borde superior brillante */
+.card-border-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+/* Interacción Hover */
+.tech-card:hover {
+    transform: translateY(-10px);
+    background: rgba(22, 27, 34, 0.95);
+    box-shadow: 0 0 30px rgba(88, 205, 209, 0.15);
+    /* Glow Cyan */
+    border-color: var(--primary);
+}
+
+.tech-card:hover .card-border-top {
+    opacity: 1;
+    height: 4px;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* Status Indicator (Online/Prototype) */
+.project-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #30363d;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff00;
+    /* Verde online */
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ff00;
+    animation: blinkStatus 2s infinite;
+}
+
+.status-dot.warning {
+    background-color: var(--secondary);
+    /* Naranja/Rosa para prototipo */
+    box-shadow: 0 0 5px var(--secondary);
+}
+
+@keyframes blinkStatus {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Icono Gigante de Fondo */
+.project-icon-large {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(88, 205, 209, 0.05) 0%, transparent 100%);
+    transition: 0.4s;
+}
+
+.project-icon-large i {
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(88, 205, 209, 0.4));
+    transition: 0.4s;
+}
+
+.tech-card:hover .project-icon-large i {
+    transform: scale(1.1) rotate(-5deg);
+    color: var(--secondary);
+    filter: drop-shadow(0 0 15px rgba(235, 25, 110, 0.6));
+}
+
+/* Contenido */
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.tech-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.tech-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Tags Tecnológicos */
+.tech-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tags span {
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--primary);
+    background: rgba(88, 205, 209, 0.1);
+    padding: 5px 10px;
+    border: 1px solid rgba(88, 205, 209, 0.2);
+    /* Borde cortado en los tags también */
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+/* Ajuste del botón para que encaje */
+.tech-card .btn {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-muted);
+    border-top: 1px solid #30363d;
+    margin-top: 4rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0d1117;
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+}

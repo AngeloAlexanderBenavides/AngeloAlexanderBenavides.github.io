@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://github.com/AngeloAlexanderBenavides.png" type="image/png">
+    <title>Angelo Benavides | Software & Robotics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="#inicio">&lt;Angelo.dev /&gt;</a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-link">Perfil</a></li>
+                <li><a href="#skills" class="nav-link">Stack</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <!-- Fondo Grid con efecto Spotlight -->
+        <div class="hero-bg" id="hero-bg"></div>
+
+        <!-- Elementos Flotantes (Decoración) -->
+        <div class="floating-icons">
+            <i class="fab fa-python icon-float p1"></i>
+            <i class="fas fa-robot icon-float p2"></i>
+            <i class="fas fa-shield-alt icon-float p3"></i>
+            <i class="fas fa-code icon-float p4"></i>
+            <i class="fas fa-terminal icon-float p5"></i>
+        </div>
+
+        <div class="hero-content">
+            <!-- Título con efecto Glitch -->
+            <h1 class="hero-title glitch-wrapper">
+                <span class="glitch" data-text="Angelo Benavides">Angelo Benavides</span>
+            </h1>
+
+            <div class="typewriter-container">
+                <span class="prompt">></span>
+                <span class="typewriter" id="typewriter"></span>
+                <span class="cursor">_</span>
+            </div>
+
+            <p class="hero-subtitle">
+                Ingeniería de Software <span class="separator">|</span> Robótica <span class="separator">|</span>
+                Ciberseguridad
+            </p>
+
+            <a href="#proyectos" class="btn draw-border">
+                INICIAR SISTEMA
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT ME (INTEGRACIÓN DE TU CARD) -->
+    <section id="sobre-mi" class="about">
+        <div class="about-container">
+
+            <!-- TU TARJETA PERSONALIZADA -->
+            <div class="profile-card-wrapper" data-aos="fade-right">
+                <div class="card">
+                    <div class="card-img-container">
+                        <!-- CAMBIA ESTO POR TU FOTO REAL -->
+                        <img src="https://github.com/AngeloAlexanderBenavides.png" alt="Angelo Benavides"
+                            class="card__image">
+                    </div>
+                    <p class="card__name">Angelo Benavides</p>
+                    <p class="card__title">Developer & Maker</p>
+
+                    <div class="grid-container">
+                        <div class="grid-child-posts">
+                            15+ Proyectos
+                        </div>
+                        <div class="grid-child-followers">
+                            UPEC Student
+                        </div>
+                    </div>
+
+                    <ul class="social-icons">
+                        <li><a href="https://github.com/AngeloAlexanderBenavides" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/in/angelo-benavides-4421b126a/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://instagram.com/xaander___" target="_blank"><i
+                                    class="fab fa-instagram"></i></a></li>
+                        <li><a href="mailto:tu@email.com"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                    <button class="btn draw-border" onclick="window.location.href='#contact'">Contactar</button>
+                </div>
+            </div>
+
+            <!-- TEXTO SOBRE TI -->
+            <div class="about-text-content" data-aos="fade-left">
+                <h2 class="section-title">Sobre <span class="highlight">Mí</span></h2>
+                <p>
+                    Soy un estudiante apasionado de la <strong>Universidad Politécnica Estatal del Carchi
+                        (UPEC)</strong>.
+                    Mi enfoque no es tradicional: busco la convergencia entre el código abstracto y el mundo físico.
+                </p>
+                <br>
+                <div class="code-block">
+                    <p><span class="code-pink">const</span> <span class="code-blue">angelo</span> = {</p>
+                    <p>&nbsp;&nbsp;pasion: [<span class="code-green">'Robótica'</span>, <span
+                            class="code-green">'Pentesting'</span>, <span class="code-green">'DevOps'</span>],</p>
+                    <p>&nbsp;&nbsp;mision: <span class="code-green">'Construir tecnología segura y escalable'</span>,
+                    </p>
+                    <p>&nbsp;&nbsp;estado: <span class="code-green">'Aprendiendo siempre'</span></p>
+                    <p>};</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills">
+        <h2 class="section-title center">Arsenal <span class="highlight">Tecnológico</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-laptop-code skill-icon"></i>
+                <h3>Dev & Backend</h3>
+                <p>C++, Python, PHP, SQL</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-microchip skill-icon"></i>
+                <h3>Robótica & IoT</h3>
+                <p>Arduino, ROS2, Cinemática</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-user-secret skill-icon"></i>
+                <h3>Ciberseguridad</h3>
+                <p>Kali Linux, Pentesting, Redes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="projects">
+        <h2 class="section-title center">Proyectos <span class="highlight">Clasificados</span></h2>
+        <div class="projects-grid">
+
+            <!-- PROYECTO 1 -->
+            <div class="tech-card">
+                <div class="card-border-top"></div>
+                <div class="project-status online">
+                    <span class="status-dot"></span> System Online
+                </div>
+                <div class="project-icon-large">
+                    <i class="fas fa-brain"></i> <!-- Icono cerebro IA -->
+                </div>
+                <div class="card-content">
+                    <h3>LexBen Ecosystem</h3>
+                    <p>Plataforma integral de IA y automatización. Arquitectura escalable y servicios digitales.</p>
+                    <div class="tech-tags">
+                        <span>Python</span><span>AI</span><span>Web</span>
+                    </div>
+                    <a href="https://lexben.dev/" target="_blank" class="btn draw-border sm">ACCESS SYSTEM</a>
+                </div>
+            </div>
+
+            <!-- PROYECTO 2 -->
+            <div class="tech-card">
+                <div class="card-border-top"></div>
+                <div class="project-status online">
+                    <span class="status-dot"></span> Store Live
+                </div>
+                <div class="project-icon-large">
+                    <i class="fas fa-shopping-cart"></i> <!-- Icono tienda -->
+                </div>
+                <div class="card-content">
+                    <h3>LexBen Store</h3>
+                    <p>E-commerce cloud-native con gestión de inventario en tiempo real y pasarela segura.</p>
+                    <div class="tech-tags">
+                        <span>Cloud</span><span>React</span><span>Stripe</span>
+                    </div>
+                    <a href="https://lexben.me/" target="_blank" class="btn draw-border sm">VISIT STORE</a>
+                </div>
+            </div>
+
+            <!-- PROYECTO 3 -->
+            <div class="tech-card">
+                <div class="card-border-top"></div>
+                <div class="project-status prototype">
+                    <span class="status-dot warning"></span> Prototype v1.2
+                </div>
+                <div class="project-icon-large">
+                    <i class="fas fa-leaf"></i> <!-- Icono planta/IoT -->
+                </div>
+                <div class="card-content">
+                    <h3>Smart Plant Pot</h3>
+                    <p>Sistema IoT autónomo. Monitoreo de humedad y riego automático mediante sensores.</p>
+                    <div class="tech-tags">
+                        <span>C++</span><span>Arduino</span><span>IoT</span>
+                    </div>
+                    <button class="btn draw-border sm">VIEW SCHEMATICS</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>"El código es poesía, las máquinas son el lienzo."</p>
+        <p class="copy">&copy; 2025 Angelo Benavides</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
