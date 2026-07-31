@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Cpu, HardDrive, LayoutTemplate, Bot, RefreshCw } from 'lucide-react';
+import { SocialCard } from './SocialCard';
 
 interface HUDInterfaceProps {
   activeState: 'NEUTRAL' | 'AI' | 'BACKEND' | 'FRONTEND' | 'ROBOTICS';
@@ -230,8 +231,13 @@ export const HUDInterface: React.FC<HUDInterfaceProps> = ({ activeState, onState
             </p>
           </motion.div>
 
+          {/* Social Profile Card */}
+          <div className="w-full max-w-xs mx-auto mt-6 pointer-events-auto">
+            <SocialCard activeState={activeState} />
+          </div>
+
           {/* Categories navigation overlay button grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full mt-10 max-w-4xl px-4 pointer-events-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 w-full mt-8 max-w-4xl px-4 pointer-events-auto">
             <button
               onClick={() => onStateChange('AI')}
               className={getButtonClass('AI')}
